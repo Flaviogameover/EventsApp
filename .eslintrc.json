@@ -20,6 +20,7 @@
 	},
 	"plugins": ["@typescript-eslint"],
 	"rules": {
+		
 		"jsx-a11y/control-has-associated-label": "off",
 		"no-use-before-define": "off",
 		"@typescript-eslint/no-use-before-define": ["error"],
@@ -34,8 +35,11 @@
 			2,
 			{ "namedComponents": "arrow-function" }
 		],
-		"indent": ["error", 4],
-		"react/jsx-indent": ["error", 4],
+		"indent": [
+			"error",
+			"tab"
+		],
+		"react/jsx-indent": ["error", "tab"],
 		"import/extensions": [
 			"error",
 			"ignorePackages",
@@ -43,6 +47,10 @@
 				"ts": "never",
 				"tsx": "never"
 			}
+		],
+		"semi": [
+			"error",
+			"always"
 		]
 	}
 }
