@@ -2,28 +2,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { TGetServerSideProps } from '../types';
+import { IHomeProps } from '../interfaces';
 
-type GetServerSideProps = {
-	props: {
-		categories: {
-			id: string;
-			title: string;
-			description: string;
-			image: string;
-		}[];
-	};
-};
-
-interface HomeProps {
-	categories: {
-		id: string;
-		title: string;
-		description: string;
-		image: string;
-	}[];
-}
-
-const getServerSideProps: () => Promise<GetServerSideProps> = async () => {
+const getServerSideProps: () => Promise<TGetServerSideProps> = async () => {
 	const data = await import('../data/data.json');
 	const { events_categories } = data;
 	console.log(events_categories);
@@ -34,7 +16,7 @@ const getServerSideProps: () => Promise<GetServerSideProps> = async () => {
 	};
 };
 
-const Home = ({ categories }: HomeProps): JSX.Element => {
+const Home = ({ categories }: IHomeProps): JSX.Element => {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -45,15 +27,15 @@ const Home = ({ categories }: HomeProps): JSX.Element => {
 			<header>
 				<nav>
 					<img />
-					<Link href="/">Home</Link>
-					<Link href="/events">Events</Link>
-					<Link href="/about-us">About Us</Link>
+					<Link href="/" passHref>Home</Link>
+					<Link href="/events" passHref>Events</Link>
+					<Link href="/about-us" passHref>About Us</Link>
 				</nav>
 			</header>
 
-			<main>
+			<main className={styles.main}>
 				{categories.map((category) => (
-					<Link key={category.id} href={`/events/${category.id}`}>
+					<Link key={category.id} href={`/events/${category.id}`} passHref>
 						<Image
 							src={category.image}
 							alt={category.title}

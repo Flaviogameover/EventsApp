@@ -1,21 +1,32 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { IHomeProps } from '../../interfaces';
+import { TGetServerSideProps } from '../../types';
 
-const Events = (): JSX.Element => (
+const getStaticProps: () => Promise<TGetServerSideProps> = async () => {
+	const { events_categories } = await import('../../data/data.json');
+	return {
+		props: {
+			categories: events_categories,
+		},
+	};
+};
+const Events = ({ categories }: IHomeProps): JSX.Element => (
 	<div>
 		<h1>Events</h1>
-		<Link href="/london">
-			<img />
-			<h2>Events in London</h2>
-		</Link>
-		<Link href="/">
-			<img />
-			<h2>Events in San Francisco</h2>
-		</Link>
-		<Link href="/">
-			<img />
-			<h2>Events in Barcelona</h2>
-		</Link>
+		{categories.map((category) => (
+			<Link key={category.id} href={`/events/${category.id}`} passHref>
+				<Image
+					src={category.image}
+					alt={category.title}
+					width={300}
+					height={300}
+				/>
+				<h2>{category.title}</h2>
+			</Link>
+		))}
 	</div>
 );
 
 export default Events;
+export { getStaticProps };
