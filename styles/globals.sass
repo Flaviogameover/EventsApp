@@ -1,0 +1,213 @@
+html,
+body
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
+
+*
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+
+a
+	color: inherit
+	text-decoration: none
+
+
+.main-container
+	width: 100%
+
+// variables
+$max-width: 1450px
+
+header
+	height: 250px
+	width: 100%
+	padding: 30px 2%
+	background: linear-gradient(305deg, #dbfff3, transparent)
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	.header-container
+		margin: 0 auto
+		width: 100%
+		max-width: $max-width
+		display: flex
+		justify-content: space-between
+		align-items: center
+		svg
+			width: 40px
+			height: 40px	
+			color: #177c5b
+		nav
+			ul
+				display: flex
+				list-style: none
+				li
+					padding: 0 10px
+					font-weight: 600
+					font-size: 1.2rem
+					a
+						color: #177c5b
+						&:hover
+							color: #0f5a3d
+							text-decoration: underline
+							text-decoration-color: #0f5a3d
+	h1
+		text-transform: uppercase
+		font-size: 40px
+		text-align: center
+		color: #177c5b
+		margin-bottom: 20px
+
+main
+	margin: 0 auto
+	width: 100%
+	min-height: calc(100vh - 330px)
+	max-width: $max-width
+
+.home
+	padding: 0 2%
+	display: flex
+	flex-direction: column
+	a
+		margin: 10px 0
+		display: flex
+		justify-content: space-between
+		align-items: center
+		border-bottom: 1px solid #0f5a3d
+		.home-image
+			padding: 0 15px
+		.home-content
+			padding: 0 15px
+			h2
+				font-size: 1.5rem
+				font-weight: 600
+				margin-bottom: 5px
+				color: #177c5b
+			p
+				font-size: 1.2rem
+				color: #666
+				margin-bottom: 5px
+				color: #0f5a3d
+		&:nth-child(even)
+			flex-direction: row-reverse
+
+.events
+	padding: 0 2%
+	display: flex
+	flex-direction: column
+	align-items: center
+	h1
+		font-size: 2.5rem
+		font-weight: 600
+		margin-bottom: 20px
+		color: #177c5b
+	.event-container
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+		.event
+			width: 350px
+			margin: 10px
+			padding: 10px
+			border: 1px solid #ccc
+			border-radius: 5px
+			display: flex
+			flex-direction: column
+			align-items: center
+			img
+				width: 300px
+				height: 250px
+				object-fit: cover
+				border-radius: 5px
+			h2
+				font-size: 1.5rem
+				font-weight: 600
+				margin-bottom: 5px
+				color: #177c5d
+				padding: 5px
+			p
+				font-size: 0.9rem
+				color: #666
+				margin-bottom: 5px
+				color: #0f5a3d
+
+.events-city
+	padding: 0 2%
+	display: flex
+	flex-direction: column
+	align-items: center
+	h1
+		font-size: 2.5rem
+		font-weight: 600
+		margin-bottom: 20px
+		color: #177c5b
+	.event-container
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+		.event
+			width: 350px
+			margin: 10px
+			border-radius: 5px
+			display: flex
+			flex-direction: column
+			align-items: center
+			img
+				width: 300px
+				height: 250px
+				object-fit: cover
+				border-radius: 5px
+			h2
+				font-size: 1.5rem
+				font-weight: 600
+				margin-bottom: 5px
+				color: #177c5d
+				padding: 5px
+				text-align: center
+
+.event-show
+	padding: 0 2%
+	img
+		width: 100%
+		height: 600px
+		object-fit: fill
+		border-radius: 5px
+		margin-bottom: 20px
+	h1
+		font-size: 2.5rem
+		font-weight: 600
+		margin-bottom: 20px
+		color: #177c5b
+	p
+		font-size: 1.2rem
+		margin-bottom: 20px
+		color: #0f5a3d
+		text-align: justify
+
+
+.about
+	padding: 20px 2%
+	display: flex
+	flex-direction: column
+	align-items: center
+	h1
+		font-size: 2.5rem
+		font-weight: 600
+		margin-bottom: 20px
+		color: #177c5b
+	p
+		font-size: 1.2rem
+		color: #666
+		margin-bottom: 20px
+		color: #0f5a3d
+
+footer
+	height: 80px
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+	color: #fff
+	font-size: 1.2rem
+	font-weight: 600
+	background: #309c73

@@ -1,3 +1,5 @@
+import { IEvent } from "../interfaces";
+
 export type TGetServerSideProps = {
 	props: {
 		categories: {
@@ -8,3 +10,14 @@ export type TGetServerSideProps = {
 		}[];
 	};
 };
+
+export type TGetStaticPaths = {
+	paths: { params: { category: string } }[];
+	fallback: boolean;
+};
+
+export type TGetStaticProps = Promise<{
+	props: {
+		events: IEvent[];
+	};
+}>;

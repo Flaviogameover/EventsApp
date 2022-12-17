@@ -28,17 +28,6 @@ export interface IEventCityProps {
 	pageTitle?: string;
 };
 
-export type TGetStaticPaths = {
-	paths: { params: { category: string } }[];
-	fallback: boolean;
-};
-
-export type TGetStaticProps = Promise<{
-	props: {
-		events: IEvent[];
-	};
-}>;
-
 export interface ICtx {
 	params: {
 		slug: string;

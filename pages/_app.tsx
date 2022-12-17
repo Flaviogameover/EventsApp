@@ -1,8 +1,14 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/globals.sass';
+import type { AppProps } from 'next/app';
+import Layout from './../src/components/Layout/intex';
 
 const App = ({ Component, pageProps }: AppProps) => {
-    return <Component {...pageProps} />;
-}
-
+	return (
+		<>
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		</>
+	);
+};
 export default App;

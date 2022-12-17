@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-	TGetStaticPaths,
 	IPath,
-	TGetStaticProps,
 	IEvent,
 	IEventCityProps,
 } from '../../../interfaces';
+import { TGetStaticPaths, TGetStaticProps } from '../../../types';
 
 const getStaticPaths: () => Promise<TGetStaticPaths> = async () => {
 	const { events_categories } = await import('../../../data/data.json');
@@ -48,11 +47,12 @@ const EventCity: ({ events, pageTitle }: IEventCityProps) => JSX.Element = ({
 	pageTitle,
 }) => {
 	return (
-		<div>
+		<div className="events-city">
 			<h1>{pageTitle}</h1>
-			<div>
+			<div className="event-container">
 				{events.map((event) => (
 					<Link
+						className="event"
 						key={event.id}
 						href={`/events/${event.city}/${event.id}`}
 						passHref
@@ -60,7 +60,7 @@ const EventCity: ({ events, pageTitle }: IEventCityProps) => JSX.Element = ({
 						<Image
 							alt={event.id}
 							width={300}
-							height={300}
+							height={250}
 							src={event.image}
 						/>
 						<h2>{event.title}</h2>

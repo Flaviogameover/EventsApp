@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { TGetStaticPaths as TGSP, IPath, IEvent, ICtx} from '../../../interfaces';
+import { IPath, IEvent, ICtx} from '../../../interfaces';
+import {TGetStaticPaths as TGSP} from '../../../types';
 
 type TGetStaticPaths = TGSP & {
 	paths: IPath[];
@@ -45,7 +46,7 @@ const getStaticProps: (context: ICtx) => TGetStaticProps = async (context) => {
 
 const Event: ({ event }: { event: IEvent }) => JSX.Element = ({ event }) => {
 	return (
-		<div>
+		<div className="event-show">
 			<Image
 				src={event.image}
 				alt={event.title}
@@ -53,7 +54,6 @@ const Event: ({ event }: { event: IEvent }) => JSX.Element = ({ event }) => {
 				height={600}
 			/>
 			<h1>{event.title}</h1>
-			<h2>{event.city}</h2>
 			<p>{event.description}</p>
 		</div>
 	);

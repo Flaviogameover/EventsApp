@@ -12,19 +12,27 @@ const getStaticProps: () => Promise<TGetServerSideProps> = async () => {
 	};
 };
 const Events = ({ categories }: IHomeProps): JSX.Element => (
-	<div>
+	<div className="events">
 		<h1>Events</h1>
-		{categories.map((category) => (
-			<Link key={category.id} href={`/events/${category.id}`} passHref>
-				<Image
-					src={category.image}
-					alt={category.title}
-					width={300}
-					height={300}
-				/>
-				<h2>{category.title}</h2>
-			</Link>
-		))}
+		<div className="event-container">
+			{categories.map((category) => (
+				<Link
+					className="event"
+					key={category.id}
+					href={`/events/${category.id}`}
+					passHref
+				>
+					<Image
+						src={category.image}
+						alt={category.title}
+						width={300}
+						height={250}
+					/>
+					<h2>{category.title}</h2>
+					<p>{category.description}</p>
+				</Link>
+			))}
+		</div>
 	</div>
 );
 
