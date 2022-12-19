@@ -17,9 +17,20 @@ a
 
 // variables
 $max-width: 1450px
+$header-height: 250px
+$footer-height: 60px
+$offset: calc(#{$header-height} + #{$footer-height})
+$min-height: calc(100vh - #{$offset})
+
+
+main
+	margin: 10px auto
+	width: 100%
+	min-height: $min-height
+	max-width: $max-width
 
 header
-	height: 250px
+	height: $header-height
 	width: 100%
 	padding: 30px 2%
 	background: linear-gradient(305deg, #dbfff3, transparent)
@@ -58,11 +69,6 @@ header
 		color: #177c5b
 		margin-bottom: 20px
 
-main
-	margin: 0 auto
-	width: 100%
-	min-height: calc(100vh - 330px)
-	max-width: $max-width
 
 .home
 	padding: 0 2%
@@ -106,16 +112,16 @@ main
 		justify-content: center
 		flex-wrap: wrap
 		.event
-			width: 350px
+			position: relative
+			width: 450px
 			margin: 10px
 			padding: 10px
-			border: 1px solid #ccc
 			border-radius: 5px
 			display: flex
 			flex-direction: column
 			align-items: center
 			img
-				width: 300px
+				width: 100%
 				height: 250px
 				object-fit: cover
 				border-radius: 5px
@@ -123,13 +129,11 @@ main
 				font-size: 1.5rem
 				font-weight: 600
 				margin-bottom: 5px
-				color: #177c5d
 				padding: 5px
-			p
-				font-size: 0.9rem
-				color: #666
-				margin-bottom: 5px
-				color: #0f5a3d
+				position: absolute
+				bottom: 10px
+				color: #dbfff3
+				
 
 .events-city
 	padding: 0 2%
@@ -146,14 +150,14 @@ main
 		justify-content: center
 		flex-wrap: wrap
 		.event
-			width: 350px
+			width: 550px
 			margin: 10px
 			border-radius: 5px
 			display: flex
 			flex-direction: column
 			align-items: center
 			img
-				width: 300px
+				width: 100%
 				height: 250px
 				object-fit: cover
 				border-radius: 5px
@@ -183,7 +187,37 @@ main
 		margin-bottom: 20px
 		color: #0f5a3d
 		text-align: justify
+	.form-email
+		padding: 20px 0
+		display: flex
+		align-items: flex-end
+		label
+			font-size: 1.2rem
+			font-weight: 600
+			color: #177c5b
+			display: flex
+			justify-content: center
+			flex-direction: column
+			input
+				margin-top: 10px
+				width: 340px
+				height: 40px
+				border: 1px solid #0f5a3d
+				border-radius: 5px
+				padding: 0 10px
 
+		button
+			width: 100px
+			height: 40px
+			border: 1px solid #0f5a3d
+			border-radius: 5px
+			background: #0f5a3d
+			color: #fff
+			font-weight: 600
+			margin-left: 10px
+			&:hover
+				background: #177c5b
+				cursor: pointer
 
 .about
 	padding: 20px 2%
@@ -202,12 +236,12 @@ main
 		color: #0f5a3d
 
 footer
-	height: 80px
+	height: $footer-height
 	display: flex
 	justify-content: center
 	align-items: center
 	flex-direction: column
 	color: #fff
-	font-size: 1.2rem
+	font-size: 0.9rem
 	font-weight: 600
 	background: #309c73

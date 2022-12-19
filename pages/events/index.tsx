@@ -29,7 +29,6 @@ const Events = ({ categories }: IHomeProps): JSX.Element => (
 						height={250}
 					/>
 					<h2>{category.title}</h2>
-					<p>{category.description}</p>
 				</Link>
 			))}
 		</div>
