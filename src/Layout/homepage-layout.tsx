@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Header from '../Header';
-import Footer from '../Footer';
+import { Header, PanelHeader } from '../components/Header';
+import Footer from '../components/Footer';
 
 const Layout: ({ children }: { children: JSX.Element }) => JSX.Element = ({
 	children,
@@ -18,4 +18,5 @@ const Layout: ({ children }: { children: JSX.Element }) => JSX.Element = ({
 		</div>
 	</>
 );
+
 export default Layout;

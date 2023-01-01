@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { IPath, IEvent, ICtx } from '../../../interfaces';
-import { TGetStaticPaths as TGSP } from '../../../types';
 import React from 'react';
-import { useRouter } from 'next/router';
-import { api } from '../../../src/services/api';
+import { IPath, IEvent, ICtx, TGetStaticPaths as TGSP } from '@interfaces/index';
+import Layout from '@Layout/homepage-layout';
+import { NextPageWithLayout } from '@pages/_app';
+import { api } from '@services/api';
 
 type TGetStaticPaths = TGSP & {
 	paths: IPath[];
@@ -46,9 +46,8 @@ const getStaticProps: (context: ICtx) => TGetStaticProps = async (context) => {
 	};
 };
 
-const Event: ({ event }: { event: IEvent }) => JSX.Element = ({ event }) => {
+const Event: NextPageWithLayout<{ event: IEvent }> = ({ event }) => {
 	const inputEmail = React.useRef<HTMLInputElement>(null);
-	const router = useRouter();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -62,7 +61,7 @@ const Event: ({ event }: { event: IEvent }) => JSX.Element = ({ event }) => {
 			});
 			alert(request.data.message);
 			e.currentTarget.reset();
-		} catch (error) {
+		} catch (error:any) {
 			alert(error.response.data.message);
 		}
 	};
@@ -96,3 +95,5 @@ const Event: ({ event }: { event: IEvent }) => JSX.Element = ({ event }) => {
 export default Event;
 
 export { getStaticPaths, getStaticProps };
+
+Event.getLayout = (page) => <Layout>{page}</Layout>;

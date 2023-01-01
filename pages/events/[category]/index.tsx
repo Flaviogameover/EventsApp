@@ -4,8 +4,11 @@ import {
 	IPath,
 	IEvent,
 	IEventCityProps,
-} from '../../../interfaces';
-import { TGetStaticPaths, TGetStaticProps } from '../../../types';
+	TGetStaticPaths,
+	TGetStaticProps,
+} from '@interfaces/index';
+import Layout from '@Layout/homepage-layout';
+import { NextPageWithLayout } from '@pages/_app';
 
 const getStaticPaths: () => Promise<TGetStaticPaths> = async () => {
 	const { events_categories } = await import('../../../data/data.json');
@@ -42,7 +45,7 @@ const getStaticProps: (context: IPath) => TGetStaticProps = async (context) => {
 	};
 };
 
-const EventCity: ({ events, pageTitle }: IEventCityProps) => JSX.Element = ({
+const EventCity: NextPageWithLayout<IEventCityProps> = ({
 	events,
 	pageTitle,
 }) => {
@@ -73,3 +76,5 @@ const EventCity: ({ events, pageTitle }: IEventCityProps) => JSX.Element = ({
 
 export default EventCity;
 export { getStaticPaths, getStaticProps };
+
+EventCity.getLayout = (page) => <Layout>{page}</Layout>;

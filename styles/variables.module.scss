@@ -1,0 +1,6 @@
+// variables
+$max-width: 1450px;
+$header-height: 250px;
+$footer-height: 60px;
+$offset: calc(#{$header-height} + #{$footer-height});
+$min-height: calc(100vh - #{$offset});

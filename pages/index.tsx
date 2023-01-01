@@ -1,20 +1,23 @@
-import { TGetServerSideProps } from '../types';
-import { IHomeProps } from '../interfaces';
-import HomePage from '../src/components/Home';
+import { IHomeProps, TGetServerSideProps } from '@interfaces/index';
+import HomePage from '@components/Home';
+import Layout from '@Layout/homepage-layout';
+import { NextPageWithLayout } from '@pages/_app';
+import { api } from '@services/api';
 
 const getServerSideProps: () => Promise<TGetServerSideProps> = async () => {
-	const data = await import('../data/data.json');
-	const { events_categories } = data;
+	const { data } = await api.get('/posts/cities');
 	return {
 		props: {
-			categories: events_categories,
+			categories: data,
 		},
 	};
 };
 
-const Home = ({ categories }: IHomeProps): JSX.Element => {
+const Home: NextPageWithLayout<IHomeProps> = ({ categories }) => {
 	return <HomePage categories={categories} />;
 };
 
 export default Home;
 export { getServerSideProps };
+
+Home.getLayout = (page) => <Layout>{page}</Layout>;

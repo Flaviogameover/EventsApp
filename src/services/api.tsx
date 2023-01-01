@@ -1,6 +1,7 @@
 import axios from 'axios';
-import type { AxiosInstance } from 'axios';
 
-export const api: AxiosInstance = axios.create({
-	baseURL: 'http://localhost:3000/api',
+
+// TROCAR DA PASTA SERVICES PARA PASTA (DESCONHECIDO)
+export const api = axios.create({
+	baseURL: process.env.NEXT_API_URL,
 });

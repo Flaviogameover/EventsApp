@@ -1,4 +1,7 @@
-const About: () => JSX.Element = () => {
+import Layout from '@Layout/homepage-layout';
+import { NextPageWithLayout } from '@pages/_app';
+
+const About: NextPageWithLayout = () => {
 	return (
 		<div className="about">
 			<h1>About Us</h1>
@@ -16,3 +19,5 @@ const About: () => JSX.Element = () => {
 };
 
 export default About;
+
+About.getLayout = (page) => <Layout>{page}</Layout>;

@@ -1,17 +1,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { IHomeProps } from '../../interfaces';
-import { TGetServerSideProps } from '../../types';
+import { IHomeProps, TGetServerSideProps } from '@interfaces/index';
+import Layout from '@Layout/homepage-layout';
+import { NextPageWithLayout } from '@pages/_app';
+import { api } from '@services/api';
 
 const getStaticProps: () => Promise<TGetServerSideProps> = async () => {
-	const { events_categories } = await import('../../data/data.json');
+	const { data } = await api.get('/posts/cities');
 	return {
 		props: {
-			categories: events_categories,
+			categories: data,
 		},
 	};
 };
-const Events = ({ categories }: IHomeProps): JSX.Element => (
+
+const Events: NextPageWithLayout<IHomeProps> = ({ categories }) => (
 	<div className="events">
 		<h1>Events</h1>
 		<div className="event-container">
@@ -37,3 +40,5 @@ const Events = ({ categories }: IHomeProps): JSX.Element => (
 
 export default Events;
 export { getStaticProps };
+
+Events.getLayout = (page) => <Layout>{page}</Layout>;

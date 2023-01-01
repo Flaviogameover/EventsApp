@@ -1,0 +1,19 @@
+@import "./variables.module.scss";
+
+.panel-container {
+    min-height: $min-height;
+
+    header {
+        height: $header-height;
+        background: #0f5a3d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+    }
+    
+}

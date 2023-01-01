@@ -2,6 +2,10 @@
 const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
+	env: {
+		NEXT_MONGODB_URI: process.env.NEXT_MONGODB_URI,
+		NEXT_API_URL: process.env.NEXT_API_URL,
+	},
 	images: {
 		remotePatterns: [
 			{
@@ -19,7 +23,7 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'picsum.photos',
-			}
+			},
 		],
 	},
 };
